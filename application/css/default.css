@@ -374,12 +374,15 @@ input[type="radio"] {
 }
 
 #shoutbox form textarea {
-    margin-top: 5px;
-    height: 16px;
+    height: 40px;
+    width: 100%;
 }
 
 #shoutbox form input[type="submit"] {
     margin-top: 4px;
+    float: right;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #shoutbox .shout {
@@ -396,6 +399,7 @@ input[type="radio"] {
 #shoutbox .shout .shout_date {
     float: right;
     font-size: 10px;
+    z-index: 9;
 }
 
 
@@ -499,6 +503,8 @@ input[type="radio"] {
 .q8, .q8 a { color: #ffff98 ! important; } /* Light yellow (item set bonuses) */
 .q9, .q9 a { color: #71D5FF ! important; } /* Light blue (glyph type) */
 .q10, .q10 a { color: #ff4040 ! important; } /* Red (requirement not met, error) */
+.q13, .q13 a { color: #ffff98 ! important; } /* Azerite */
+.q14, .q14 a { color: #8788ee ! important; } /* Minor Power */
 
 /* Gems colors */
 .gem1 {color: #9d9d9d !important}
@@ -511,10 +517,30 @@ input[type="radio"] {
 .gem14 {color: #fff !important}
 
 /* Sockets */
-.socket-meta   { padding-left: 20px; background: url(../images/misc/socket_meta.gif) no-repeat left center; }
-.socket-red    { padding-left: 20px; background: url(../images/misc/socket_red.gif) no-repeat left center; }
-.socket-yellow { padding-left: 20px; background: url(../images/misc/socket_yellow.gif) no-repeat left center; }
-.socket-blue   { padding-left: 20px; background: url(../images/misc/socket_blue.gif) no-repeat left center; }
+.socket-meta             { padding-left: 20px; background: url(../images/misc/socket_meta.gif) no-repeat left center; }
+.socket-red              { padding-left: 20px; background: url(../images/misc/socket_red.gif) no-repeat left center; }
+.socket-yellow           { padding-left: 20px; background: url(../images/misc/socket_yellow.gif) no-repeat left center; }
+.socket-blue             { padding-left: 20px; background: url(../images/misc/socket_blue.gif) no-repeat left center; }
+.socket-prismatic        { padding-left: 20px; background: url(../images/misc/socket-prismatic.gif) no-repeat left center; }
+.socket-cogwheel         { padding-left: 20px; background: url(../images/misc/socket-cogwheel.gif) no-repeat left center; }
+.socket-domination       { padding-left: 20px; background: url(../images/misc/socket-domination.gif) no-repeat left center; }
+.socket-hydraulic        { padding-left: 20px; background: url(../images/misc/socket-hydraulic.gif) no-repeat left center; }
+.socket-primordial       { padding-left: 20px; background: url(../images/misc/socket-primordial.gif) no-repeat left center; }
+.socket-tinker           { padding-left: 20px; background: url(../images/misc/socket-tinker.gif) no-repeat left center; }
+.socket-relic-iron       { padding-left: 20px; background: url(../images/misc/socket-relic-iron.png) no-repeat left center; }
+.socket-relic-blood      { padding-left: 20px; background: url(../images/misc/socket-relic-blood.png) no-repeat left center; }
+.socket-relic-shadow     { padding-left: 20px; background: url(../images/misc/socket-relic-shadow.png) no-repeat left center; }
+.socket-relic-fel        { padding-left: 20px; background: url(../images/misc/socket-relic-fel.png) no-repeat left center; }
+.socket-relic-arcane     { padding-left: 20px; background: url(../images/misc/socket-relic-arcane.png) no-repeat left center; }
+.socket-relic-frost      { padding-left: 20px; background: url(../images/misc/socket-relic-frost.png) no-repeat left center; }
+.socket-relic-fire       { padding-left: 20px; background: url(../images/misc/socket-relic-fire.png) no-repeat left center; }
+.socket-relic-water      { padding-left: 20px; background: url(../images/misc/socket-relic-water.png) no-repeat left center; }
+.socket-relic-life       { padding-left: 20px; background: url(../images/misc/socket-relic-life.png) no-repeat left center; }
+.socket-relic-storm      { padding-left: 20px; background: url(../images/misc/socket-relic-storm.png) no-repeat left center; }
+.socket-relic-holy       { padding-left: 20px; background: url(../images/misc/socket-relic-holy.png) no-repeat left center; }
+.socket-red-punchcard    { padding-left: 20px; background: url(../images/misc/socket_red.gif) no-repeat left center; }
+.socket-yellow-punchcard { padding-left: 20px; background: url(../images/misc/socket_yellow.gif) no-repeat left center; }
+.socket-blue-punchcard   { padding-left: 20px; background: url(../images/misc/socket_blue.gif) no-repeat left center; }
 
 .moneygold {
     display: inline-block;

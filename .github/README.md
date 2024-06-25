@@ -7,7 +7,7 @@
 <h3 align="center">FusionCMS</h3>
 
   <p align="center">
-    <a href="https://docs.fusiongen.net/"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/FusionWowCMS/FusionCMS/wiki"><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
     <a href="https://github.com/FusionWowCMS/FusionCMS/issues">Report Bug</a>
@@ -22,7 +22,6 @@
 * [Getting Started](#getting-started)
     * [Prerequisites](#prerequisites)
     * [Security Tips](#security-tips)
-    * [Installation](#installation)
 * [Contributing](#contributing)
 * [License](#license)
 * [Authors](#authors)
@@ -31,6 +30,39 @@
 
 FusionCMS is a free, open-source content management system. Server owners all around the world rely upon FusionCMS for
 its ease of use and development, safe and secure codebase and dedication to simplicity.
+
+### Supported emulators
+
+| Emulator                                 | Status |
+|------------------------------------------|:--------:|
+| TrinityCore old base                     | ✅ |
+| TrinityCore SRP6                         | ✅ |
+| TrinityCore SRP6 v2                      | ✅ |
+| TrinityCore Classic (TBC, Wotlk, Cata)   | ✅ |
+| Skyfire                                  | ✅ |
+| AzerothCore old base                     | ✅ |
+| AzerothCore SRP6                         | ✅ |
+| Cmangos                                  | ✅ |
+| Vmangos                                  | ✅ |
+| Mangos one - two - three                 | ✅ |
+| OregonCore                               | ✅ |
+
+### Supported expansions
+
+| Emulator                             | Status |
+|--------------------------------------|:--------:|
+| Classic                              | ✅ |
+| TBC                                  | ✅ |
+| Wotlk                                | ✅ |
+| Cataclysm                            | ✅ |
+| Mists of Pandaria                    | ✅ |
+| Warlords of Draenor                  | ✅ |
+| Legion                               | ✅ |
+| Battle For Azeroth                   | ✅ |
+| Shadowlands                          | ✅ |
+| Calssic (TBC , Wotlk, Cataclysm)     | ✅ |
+| Dragonflight                         | ✅ |
+| The War Within                       | ✅ |
 
 ## Getting Started
 
@@ -42,18 +74,14 @@ its ease of use and development, safe and secure codebase and dedication to simp
 
 | Requirements                           | Description                                                                                                           |
 |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| PHP 8.1.0 or above                     | (enable Extensions: php_mysqli, php_curl, php_openssl, php_soap, php_mbstring, php_json, php_zip, php_gd and php_gmp) |
+| PHP 8.1.0 or above                     | (enable Extensions: php_mysqli, php_curl, php_openssl, php_soap, php_mbstring, php_json, php_zip, php_gd, php_intl and php_gmp) |
 | Apache / Nginx                         | (enable modules: mod_rewrite, mod_headers, mod_expires, mod_deflate, mod_filter)                                      |
 | Pre installed World of Warcraft Server | (with the databases of: Auth, Characters and World)                                                                   |
 | MySQL / Mariadb Server                 | >= 5.6 / 10.3                                                                                                         |
 
 ### Security Tips
-
-Read the [Security Tips](SECURITY.md).
-
-### Installation
-
-Read the [installation guide](INSTALL.md).
+> [!IMPORTANT]
+> Read the [Security Tips](SECURITY.md).
 
 ## Contributing
 
@@ -82,14 +110,8 @@ contributions you make are **greatly appreciated**.
 The FusionCMS source is released under the [GNU AGPL v3](https://github.com/FusionWowCMS/FusionCMS/blob/main/LICENSE)
 
 ## Sponsor this project
-
-<img src="https://raw.githubusercontent.com/Nightprince/cryptoicons/master/SVG/btc.svg" width="15" height="15"> BTC: 18yAioyePZYdvmiqMafFDP5AJ5iRCoGSP
-
-<img src="https://raw.githubusercontent.com/Nightprince/cryptoicons/master/SVG/eth.svg" width="15" height="15"> ETH(ERC20): 0x8Dfe266213BCBc94AEB5002cbaC3fF102a45C2d1
-
-<img src="https://raw.githubusercontent.com/Nightprince/cryptoicons/master/SVG/usdt.svg" width="15" height="15"> USDT(TRC20): TZ1jRQu8Z3bwVDhxZz2EuR4N278E1oD2fM
-
-<img src="https://raw.githubusercontent.com/Nightprince/cryptoicons/master/SVG/ton.svg" width="15" height="15"> TON: EQBUvnyxEEryVdUI9ir8Dd1EvpWGqAP9nKNXBWyWgyF2DTdz
+> [!TIP]
+> [Donate with Cryptocurrency](https://paylink.payment4.com/en/Fusion%20CMS/007d3e04-643d-4105-b113-d37ad09e747e)
 
 ## Authors & Contributors
 

@@ -13,12 +13,12 @@ class Vmangos implements Emulator
     /**
      * Whether or not this emulator supports remote console
      */
-    protected $hasConsole = true;
+    protected bool $hasConsole = true;
 
     /**
      * Whether or not this emulator supports character stats
      */
-    protected $hasStats = true;
+    protected bool $hasStats = true;
 
     /**
      * Console object
@@ -28,7 +28,7 @@ class Vmangos implements Emulator
     /**
      * Array of table names
      */
-    protected $tables = array(
+    protected array $tables = [
         'account'         => 'account',
         'account_banned'  => 'account_banned',
         'account_access'  => 'account_access',
@@ -39,14 +39,14 @@ class Vmangos implements Emulator
         'guild_member'    => 'guild_member',
         'guild'           => 'guild',
         'gm_tickets'      => 'gm_tickets'
-    );
+    ];
 
     /**
      * Array of column names
      */
-    protected $columns = array(
+    protected array $columns = [
 
-        "account" => array(
+        "account" => [
             "id"           => "id",
             "username"     => "username",
             "verifier"     => "v",
@@ -58,26 +58,26 @@ class Vmangos implements Emulator
             "last_login"   => "last_login",
             "expansion"    => "expansion",
             "sessionkey"   => "sessionkey",
-        ),
+        ],
 
-        "account_banned" => array(
+        "account_banned" => [
             "id"        => "id",
             "banreason" => "banreason",
             "active"    => "active",
             "bandate"   => "bandate",
             "unbandate" => "unbandate",
             "bannedby"  => "bannedby"
-        ),
+        ],
 
-        'ip_banned' => array(
+        'ip_banned' => [
             'ip'        => 'ip',
             'bandate'   => 'bandate',
             'unbandate' => 'unbandate',
             'bannedby'  => 'bannedby',
             'banreason' => 'banreason',
-        ),
+        ],
 
-        "characters" => array(
+        "characters" => [
             "guid"             => "guid",
             "account"          => "account",
             "name"             => "name",
@@ -97,9 +97,9 @@ class Vmangos implements Emulator
             "position_z"       => "position_z",
             "orientation"      => "orientation",
             "map"              => "map"
-        ),
+        ],
 
-        "item_template" => array(
+        "item_template" => [
             "entry"         => "entry",
             "name"          => "name",
             "Quality"       => "quality",
@@ -108,9 +108,9 @@ class Vmangos implements Emulator
             "ItemLevel"     => "item_level",
             "class"         => "class",
             "subclass"      => "subclass"
-        ),
+        ],
 
-        "character_stats" => array(
+        "character_stats" => [
             "guid"          => "guid",
             "maxhealth"     => "max_health",
             "maxpower1"     => "max_power1",
@@ -133,43 +133,43 @@ class Vmangos implements Emulator
             "rangedCritPct" => "ranged_crit_chance",
             "attackPower"   => "attack_power",
             "rangedAttackPower"    => "ranged_attack_power",
-        ),
+        ],
 
-        "guild" => array(
+        "guild" => [
             "guildid"    => "guild_id",
             "name"       => "name",
             "leaderguid" => "leader_guid"
-        ),
+        ],
 
-        "guild_member" => array(
+        "guild_member" => [
             "guildid" => "guild_id",
             "guid"    => "guid"
-        ),
+        ],
 
-        "gm_tickets" => array(
+        "gm_tickets" => [
             "ticketId"   => "ticket_id",
             "guid"       => "guid",
             "message"    => "message",
             "createTime" => "create_time",
             "completed"  => "completed",
             "closedBy"   => "closed_by"
-        )
-    );
+        ]
+    ];
 
     /**
      * Array of queries
      */
-    protected $queries = array(
+    protected array $queries = [
         "get_character" => "SELECT * FROM characters WHERE guid=?",
-        "get_item" => "SELECT entry, flags as Flags, name, displayid, quality as Quality, bonding, inventory_type as InventoryType, max_durability as MaxDurability, required_level as RequiredLevel, item_level as ItemLevel, class, subclass, delay, spellid_1, spellid_2, spellid_3, spellid_4, spellid_5, spelltrigger_1, spelltrigger_2, spelltrigger_3, spelltrigger_4, spelltrigger_5, display_id as displayid, stat_type1, stat_value1, stat_type2, stat_value2, stat_type3, stat_value3, stat_type4, stat_value4, stat_type5, stat_value5, stat_type6, stat_value6, stat_type7, stat_value7, stat_type8, stat_value8, stat_type9, stat_value9, stat_type10, stat_value10, stackable FROM item_template WHERE entry=?",
+        "get_item" => "SELECT entry, flags as Flags, name, display_id as displayid, quality as Quality, bonding, inventory_type as InventoryType, max_durability as MaxDurability, required_level as RequiredLevel, item_level as ItemLevel, class, subclass, delay, spellid_1, spellid_2, spellid_3, spellid_4, spellid_5, spelltrigger_1, spelltrigger_2, spelltrigger_3, spelltrigger_4, spelltrigger_5, stat_type1, stat_value1, stat_type2, stat_value2, stat_type3, stat_value3, stat_type4, stat_value4, stat_type5, stat_value5, stat_type6, stat_value6, stat_type7, stat_value7, stat_type8, stat_value8, stat_type9, stat_value9, stat_type10, stat_value10, stackable FROM item_template WHERE entry=?",
         "get_rank" => "SELECT id id, gmlevel gmlevel FROM account WHERE id=?",
         "get_banned" => "SELECT id id, bandate bandate, bannedby bannedby, banreason banreason, active active FROM account_banned WHERE id=? AND active=1",
         "get_charactername_by_guid" => "SELECT name name FROM characters WHERE guid = ?",
         "find_guilds" => "SELECT g.guild_id guildid, g.name name, COUNT(g_m.guid) GuildMemberCount, g.leader_guid leaderguid, c.name leaderName FROM guild g, guild_member g_m, characters c WHERE g.leader_guid = c.guid AND g_m.guild_id = g.guild_id AND g.name LIKE ? GROUP BY g.guild_id",
-        "get_inventory_item" => "SELECT slot slot, item_guid item, item_instance.item_id itemEntry, enchantments enchantments FROM character_inventory, item_instance WHERE character_inventory.item_id = item_instance.guid AND character_inventory.slot >= 0 AND character_inventory.slot <= 18 AND character_inventory.guid=? AND character_inventory.bag=0",
+        "get_inventory_item" => "SELECT slot slot, item_guid item, item_instance.item_id itemEntry, enchantments enchantments FROM character_inventory, item_instance WHERE character_inventory.item_guid = item_instance.guid AND character_inventory.slot >= 0 AND character_inventory.slot <= 18 AND character_inventory.guid = ? AND character_inventory.bag = 0",
         "get_guild_members" => "SELECT m.guild_id guildid, m.guid guid, c.name name, c.race race, c.class class, c.gender gender, c.level level, m.rank member_rank, r.name rname, r.rights rights FROM guild_member m JOIN guild_rank r ON m.guild_id = r.guild_id AND m.rank = r.id JOIN characters c ON c.guid = m.guid WHERE m.guild_id = ? ORDER BY r.rights DESC",
         "get_guild" => "SELECT guild_id guildid, name guildName, leader_guid leaderguid, motd motd, create_date createdate FROM guild WHERE guild_id = ?"
-    );
+    ];
 
     public function __construct($config)
     {
@@ -179,54 +179,62 @@ class Vmangos implements Emulator
     /**
      * Get the name of a table
      *
-     * @param  String $name
-     * @return String
+     * @param String $name
+     * @return string|null
      */
-    public function getTable($name)
+    public function getTable($name): string|null
     {
         if (array_key_exists($name, $this->tables)) {
             return $this->tables[$name];
         }
+
+        return null;
     }
 
     /**
      * Get the name of a column
      *
-     * @param  String $table
-     * @param  String $name
-     * @return String
+     * @param String $table
+     * @param String $name
+     * @return string|null
      */
-    public function getColumn($table, $name)
+    public function getColumn($table, $name): string|null
     {
         if (array_key_exists($table, $this->columns) && array_key_exists($name, $this->columns[$table])) {
             return $this->columns[$table][$name];
         }
+
+        return null;
     }
 
     /**
      * Get a set of all columns
      *
-     * @param  String $name
-     * @return String
+     * @param $table
+     * @return array|string|null
      */
-    public function getAllColumns($table)
+    public function getAllColumns($table): array|string|null
     {
         if (array_key_exists($table, $this->columns)) {
             return $this->columns[$table];
         }
+
+        return null;
     }
 
     /**
      * Get a pre-defined query
      *
-     * @param  String $name
-     * @return String
+     * @param String $name
+     * @return string|null
      */
-    public function getQuery($name)
+    public function getQuery($name): string|null
     {
         if (array_key_exists($name, $this->queries)) {
             return $this->queries[$name];
         }
+
+        return null;
     }
 
     /**
@@ -234,7 +242,7 @@ class Vmangos implements Emulator
      *
      * @return Boolean
      */
-    public function hasConsole()
+    public function hasConsole(): bool
     {
         return $this->hasConsole;
     }
@@ -244,7 +252,7 @@ class Vmangos implements Emulator
      *
      * @return Boolean
      */
-    public function hasStats()
+    public function hasStats(): bool
     {
         return $this->hasStats;
     }
@@ -294,10 +302,10 @@ class Vmangos implements Emulator
      */
     public function sendItems($character, $subject, $body, $items)
     {
-        $item_command = array();
+        $item_command = [];
         $mail_id = 0;
         $item_count = 0;
-        $item_stacks = array();
+        $item_stacks = [];
 
         foreach ($items as $i) {
             // Check if item has been added
@@ -316,12 +324,12 @@ class Vmangos implements Emulator
                 $item_row = get_instance()->realms->getRealm($this->config['id'])->getWorld()->getItem($i['id']);
 
                 // Add the item to the stacks array
-                $item_stacks[$i['id']] = array(
+                $item_stacks[$i['id']] = [
                     'id' => $i['id'],
-                    'count' => array(1),
+                    'count' => [1],
                     'stack_id' => 0,
                     'max_count' => $item_row['stackable']
-                );
+                ];
             }
         }
 
@@ -364,7 +372,7 @@ class Vmangos implements Emulator
      */
     public function send($command, $realm = false)
     {
-        $blacklistCommands = array('account set', 'server shutdown', 'server exit', 'server restart', 'disable add', 'disable remove');
+        $blacklistCommands = ['account set', 'server shutdown', 'server exit', 'server restart', 'disable add', 'disable remove'];
 
         foreach ($blacklistCommands as $blacklist) {
             if (strpos($command, $blacklist))
@@ -373,12 +381,12 @@ class Vmangos implements Emulator
 
         $client = new SoapClient(
             null,
-            array(
+            [
                 "location" => "http://" . $this->config['hostname'] . ":" . $this->config['console_port'],
                 "uri" => "urn:MaNGOS",
                 'login' => $this->config['console_username'],
                 'password' => $this->config['console_password']
-            )
+            ]
         );
 
         try {

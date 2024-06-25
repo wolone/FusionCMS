@@ -24,7 +24,7 @@ class Armory extends MX_Controller
 
         $this->weapon_sub = lang('weapon_sub', 'wow_tooltip');
         $this->armor_sub = lang('armor_sub', 'wow_tooltip');
-        $this->slots = $this->config->item("slots");
+        $this->slots = lang('slots', 'wow_tooltip');
     }
 
     public function index()
@@ -170,10 +170,8 @@ class Armory extends MX_Controller
         $cache = $this->cache->get("items/item_" . $realm . "_" . $id);
 
         if ($cache !== false) {
-            $cache2 = $this->cache->get("items/display_iconname_" . $id);
-
-            if ($cache2 != false) {
-                return '<img src="' . $this->config->item('api_item_icons') . '/small/' . $cache2 . '.jpg" align="absmiddle" />';
+            if ($cache['icon']) {
+                return '<img src="' . $this->config->item('api_item_icons') . '/small/' . $cache['icon'] . '.jpg" align="absmiddle" />';
             } else {
                 return '<img src="' . $this->config->item('api_item_icons') . '/small/inv_misc_questionmark.jpg" align="absmiddle" />';
             }

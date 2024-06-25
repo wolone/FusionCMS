@@ -5,9 +5,9 @@
         
             <select class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mx-1" id="realm" name="realm" onchange="Search.toggle();return false;">
                 <option value="0" disabled>{lang("realm", "armory")}</option>
-                {for $i = 0; $i<count((array)$realms); $i++}
-                    <option {if $i == 0}selected{/if} value="{$realms[$i]->getId()}">{$realms[$i]->getName()}</option>				
-                {/for}
+                {foreach from=$realms item=realm}
+                    <option {if $realm@first}selected{/if} value="{$realm->getId()}">{$realm->getName()}</option>
+                {/foreach}
             </select>
         
             <select class="col-xs-12 col-sm-12 col-md-12 col-lg-3 mx-1" id="table" name="table" onchange="Search.toggle();return false;">
@@ -26,8 +26,8 @@
         <thead>
             <tr>
 				<th>{lang("name", "armory")}</th>
-				<th class="text-center">{lang("level", "armory")}</th>
-				<th class="text-center">{lang("required", "armory")}</th>
+				<th>{lang("level", "armory")}</th>
+				<th>{lang("required", "armory")}</th>
 				<th>{lang("type", "armory")}</th>
 			</tr>
         </thead>
@@ -49,8 +49,8 @@
         <thead>
             <tr>
 				<th>{lang("name", "armory")}</th>
-				<th class="text-center">{lang("members", "armory")}</th>
-				<th class="text-center">{lang("owner", "armory")}</th>
+				<th>{lang("members", "armory")}</th>
+				<th>{lang("owner", "armory")}</th>
 			</tr>
         </thead>
         <tbody></tbody>
